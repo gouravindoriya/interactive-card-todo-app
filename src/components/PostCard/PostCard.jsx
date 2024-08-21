@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import service from "../../Appwrite/postcards";
+import { useSelector } from "react-redux";
 const PostCard = () => {
   const colors = [
     "#FF5733",
@@ -11,6 +12,8 @@ const PostCard = () => {
     "#FFB0C1",
     "#F5F5C4"
 ];
+
+const userdata = useSelector((state) => state.auth.userData);
 
   const [title, settitle] = useState("");
   const [description, setdescription] = useState("");
@@ -27,7 +30,7 @@ const PostCard = () => {
         // color: `bg-[${color}]`,
         top: 0,
         left: 0,
-        id: "66be6f89000cba1ff2a7",
+        id: userdata["$id"],
       } // to update to gernal  audiance id = admin id
     );
 
@@ -83,7 +86,7 @@ const PostCard = () => {
             </div>
           ))}
         </div>
-        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add card</button>
+        <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add card</button>
 
       </form>
     </>
